@@ -1,56 +1,41 @@
-package lecture03.kotlin
+package lecture04.kotlin
 
-import lecture01.Person
+import lecture04.java.JavaMoney
 
 fun main() {
+    val money1 = JavaMoney(2000L)
+    val money2 = JavaMoney(1000L)
 
-    //기본 타입
+    if(money1 > money2) {
+        println("Money1이 Money2보다 금액이 큼뉘다")
+    }
 
-    /*
-    val number1 = 3 //Int
-    val number2 = 3L //Long
-    val number3 = 3.0f //float
-    var number4 = 3.0 //double  //타입간의 변화는 명시적으로 이뤄저야함
-    */
+    //동등성
+    val moneyA = JavaMoney(2000L)
+    val moneyB = moneyA
+    val moneyC = JavaMoney(2000L)
 
-    val number1 = 3
-    val number2: Long = number1.toLong() //그냥 number1하면 컴파일 오류 (type mismatch)
-    println(number1 + number2)
+    println(moneyA === moneyB) //주소 확인 - true
+    println(moneyA === moneyC) //false
+    println(moneyA == moneyC) //값 확인 - equals 호출
 
-    val nullableNumber1: Int? = 3
-    val nullbaleNumber2: Long = number1?.toLong() ?: 0L // 널러블은 적절한 처리가 필요
+    //논리연산자
+    if (fun1() || fun2()) {
+        println("본문")
+    }
 
-    val person = Person("장유진")
-    println("이름 : ${person.name}")
-    val name = "장유진"
-    println("이름 : $name")
-
-
-    val sentence = """
-        오호 여기에 자유롭게
-        문자열을 쓰면 되는군요
-        하하 ${name}
-    """.trimIndent()
-    println(sentence)
-
-    val abc = "ABC"
-    println(abc[0])
-    println(abc[2])
+    //연산자 오버로딩
+    val moneyKotlin1 = Money(1000L)
+    val moneyKotlin2 = Money(2000L)
+    println(moneyKotlin1 + moneyKotlin2)
 }
 
-fun printNameIfPerson(obj: Any) {
-    if (obj is Person) {
-        //val person = obj as Person
-        //println(person.name)
-        println(obj.name)
-    }
-    if (obj !is Person) {
-        println("Person이 아닌 경우 !is로 체크")
-    }
+fun fun1(): Boolean {
+    println("fun 1")
+    return true
 }
 
-
-fun printNameIfNullablePerson(obj: Any?) {
-    val person = obj as? Person
-     println(person?.name)
+fun fun2(): Boolean {
+    println("fun 2")
+    return true
 }
