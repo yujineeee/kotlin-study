@@ -1,5 +1,7 @@
 package lecture06.java;
 
+import java.util.List;
+
 public class Lecture06Main {
 
     public static void main(String[] args) {
