@@ -7,4 +7,7 @@ class Fruit(
         val price: Int
 ) {
 
+    fun nullOrValue():Int?{
+        return null
+    }
 }
